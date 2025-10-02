@@ -12,9 +12,9 @@ public final class BuildConfig {
   // Field from default config.
   public static final String TURN_PASS = "";
   // Field from default config.
-  public static final String TURN_URL = "turns:webrtc.mediarise.org:5349?transport=tcp";
+  public static final String TURN_URL = "";
   // Field from default config.
   public static final String TURN_USER = "";
   // Field from default config.
-  public static final String WS_BASE = "wss://webrtc.mediarise.org/ws";
+  public static final String WS_BASE = "";
 }

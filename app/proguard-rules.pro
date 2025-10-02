@@ -7,3 +7,7 @@
 # OkHttp/okio keep (обычно не нужно, но на всякий)
 -dontwarn okhttp3.**
 -dontwarn okio.**
+
+# Не вырезать WebRTC
+-keep class org.webrtc.** { *; }
+-dontwarn org.webrtc.**

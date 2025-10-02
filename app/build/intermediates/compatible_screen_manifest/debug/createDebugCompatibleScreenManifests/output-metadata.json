@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.example.dialer.dev",
+  "applicationId": "org.mediarise.dialer.dev",
   "variantName": "debug",
   "elements": []
 }

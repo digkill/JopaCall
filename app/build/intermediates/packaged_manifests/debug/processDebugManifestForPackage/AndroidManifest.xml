@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- app/src/main/AndroidManifest.xml -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dialer.dev"
+    package="org.mediarise.dialer.dev"
     android:versionCode="10"
     android:versionName="1.0.0-dev" >
 
@@ -30,29 +30,31 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <permission
-        android:name="com.example.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.example.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
-        android:name="com.example.dialer.App"
-        android:allowBackup="false"
+        android:name="org.mediarise.dialer.App"
+        android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:extractNativeLibs="true"
-        android:label="WebRTCDialer"
-        android:usesCleartextTraffic="false" >
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true" >
 
         <!-- Call service (обязательно foreground + уведомление) -->
         <service
-            android:name="com.example.dialer.service.CallService"
+            android:name="org.mediarise.dialer.service.CallService"
             android:exported="false"
-            android:foregroundServiceType="camera|microphone|dataSync" />
+            android:foregroundServiceType="camera|microphone|dataSync|mediaProjection" />
 
         <!-- Activity звонка -->
         <activity
-            android:name="com.example.dialer.ui.CallActivity"
+            android:name="org.mediarise.dialer.ui.CallActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:showOnLockScreen="true"
@@ -60,7 +62,7 @@
 
         <!-- Стартовый экран -->
         <activity
-            android:name="com.example.dialer.ui.StartActivity"
+            android:name="org.mediarise.dialer.ui.StartActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -71,7 +73,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.example.dialer.dev.androidx-startup"
+            android:authorities="org.mediarise.dialer.dev.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"

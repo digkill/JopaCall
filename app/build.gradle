@@ -1,3 +1,4 @@
+// app/build.gradle
 plugins {
   id 'com.android.application'
   id 'org.jetbrains.kotlin.android'
@@ -5,11 +6,11 @@ plugins {
 }
 
 android {
-  namespace 'com.example.dialer'
+  namespace 'org.mediarise.dialer'
   compileSdk 36
 
   defaultConfig {
-    applicationId 'com.example.dialer'
+    applicationId 'org.mediarise.dialer'
     minSdk 29
     targetSdk 36
     versionCode 10
@@ -18,18 +19,21 @@ android {
     // Эмулятор + девайсы (JNI либы)
     ndk { abiFilters "x86_64", "arm64-v8a" }
 
-    // --------- Секреты/URL берём из local.properties или ENV ---------
-    // В local.properties добавь, НО НЕ коммить:
-    // WS_BASE=wss://webrtc.mediarise.org/ws
-    // TURN_URL=turns:webrtc.mediarise.org:5349?transport=tcp
-    // TURN_USER=webrtcuser
-    // TURN_PASS=***секрет***
-    def prop = { k -> (project.findProperty(k) ?: System.getenv(k) ?: "") }
+    // ---------- Секреты/URL из local.properties или ENV ----------
+    // В local.properties добавь (НЕ коммить):
+    // WS_BASE=...
+    // TURN_URL=...
+    // TURN_USER=...
+    // TURN_PASS=...
+    def prop = { k ->
+      def v = (project.findProperty(k) ?: System.getenv(k) ?: "")
+      return v
+    }
 
-    buildConfigField "String", "WS_BASE",   "\"${prop('WS_BASE') ?: 'wss://webrtc.mediarise.org/ws'}\""
-    buildConfigField "String", "TURN_URL",  "\"${prop('TURN_URL') ?: 'turns:webrtc.mediarise.org:5349?transport=tcp'}\""
-    buildConfigField "String", "TURN_USER", "\"${prop('TURN_USER') ?: ''}\""
-    buildConfigField "String", "TURN_PASS", "\"${prop('TURN_PASS') ?: ''}\""
+    buildConfigField "String", "WS_BASE",   "\"${prop('WS_BASE')}\""
+    buildConfigField "String", "TURN_URL",  "\"${prop('TURN_URL')}\""
+    buildConfigField "String", "TURN_USER", "\"${prop('TURN_USER')}\""
+    buildConfigField "String", "TURN_PASS", "\"${prop('TURN_PASS')}\""
   }
 
   buildTypes {
@@ -37,12 +41,14 @@ android {
       minifyEnabled true
       shrinkResources true
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-      // НИЧЕГО секретного тут больше не пишем — всё идёт через defaultConfig выше
+      // Секреты не хардкодим — берём из defaultConfig (см. выше)
     }
     debug {
       applicationIdSuffix ".dev"
       versionNameSuffix "-dev"
-      // Для дебага так же берём из свойств (при необходимости в local.properties можно задать другие)
+      minifyEnabled false
+      shrinkResources false
+      // Для дебага тоже используем BuildConfig.* из defaultConfig
     }
   }
 
@@ -53,9 +59,14 @@ android {
   kotlinOptions { jvmTarget = '17' }
 
   packaging {
-    jniLibs { useLegacyPackaging true } // нужно для WebRTC .so на некоторых конфигурациях
+    jniLibs { useLegacyPackaging true } // нужно для WebRTC .so на ряде конфигураций
     resources {
-      excludes += ['META-INF/DEPENDENCIES','META-INF/ASL2.0','META-INF/LICENSE*','META-INF/NOTICE*']
+      excludes += [
+              'META-INF/DEPENDENCIES',
+              'META-INF/ASL2.0',
+              'META-INF/LICENSE*',
+              'META-INF/NOTICE*'
+      ]
     }
   }
 
@@ -63,7 +74,7 @@ android {
 }
 
 dependencies {
-  // WebRTC (AOSP мейджор 137)
+  // WebRTC (AOSP major 137) — содержит org.webrtc.audio.JavaAudioDeviceModule
   implementation "io.github.webrtc-sdk:android:137.7151.04"
 
   // Net & JSON
@@ -79,3 +90,10 @@ dependencies {
 
   implementation "com.google.android.material:material:1.13.0"
 }
+
+/*
+ВАЖНО (Release / R8):
+В файле proguard-rules.pro добавь:
+  -keep class org.webrtc.** { *; }
+  -dontwarn org.webrtc.**
+*/

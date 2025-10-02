@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.dialer.app-mergeDebugResources-37:/values-v31/values-v31.xml",
+            "outputFile": "org.mediarise.dialer.app-mergeDebugResources-37:/values-v31/values-v31.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.13\\transforms\\61233285c2a43f53853d6063abb1d933\\transformed\\material-1.13.0\\res\\values-v31\\values-v31.xml",

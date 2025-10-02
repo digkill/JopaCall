@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:2:1-58:12
-INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:2:1-58:12
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:2:1-61:12
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\61233285c2a43f53853d6063abb1d933\transformed\material-1.13.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.1] C:\Users\Digkill\.gradle\caches\8.13\transforms\697819381dc413bedc77ee02d4d2745e\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\433b03d2d9b27298a42761101bbb7044\transformed\constraintlayout-2.1.0\AndroidManifest.xml:2:1-11:12
@@ -56,11 +56,11 @@ MERGED from [io.github.webrtc-sdk:android:137.7151.04] C:\Users\Digkill\.gradle\
 	android:versionName
 		INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:2:11-57
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:3:5-63
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:2:11-69
 uses-feature#android.hardware.camera
 ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:6:5-8:36
 	android:required
@@ -74,38 +74,38 @@ MERGED from [com.squareup.okhttp3:okhttp-android:5.1.0] C:\Users\Digkill\.gradle
 	android:name
 		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:10:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:11:3-77
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:11:5-79
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:11:20-74
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:11:22-76
 uses-permission#android.permission.CAMERA
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:14:3-63
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:14:5-65
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:14:20-60
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:14:22-62
 uses-permission#android.permission.RECORD_AUDIO
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:15:3-69
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:15:5-71
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:15:20-66
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:15:22-68
 uses-permission#android.permission.FOREGROUND_SERVICE
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:18:3-19:49
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:18:5-20:51
 	tools:ignore
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:19:7-46
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:20:9-48
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:18:20-72
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:19:9-61
 uses-permission#android.permission.FOREGROUND_SERVICE_CAMERA
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:20:3-82
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:21:5-84
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:20:20-79
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:21:22-81
 uses-permission#android.permission.FOREGROUND_SERVICE_MICROPHONE
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:21:3-86
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:22:5-88
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:21:20-83
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:22:22-85
 uses-permission#android.permission.POST_NOTIFICATIONS
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:24:3-75
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:25:5-77
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:24:20-72
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:25:22-74
 application
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:26:3-57:17
-INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:26:3-57:17
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:27:5-60:19
+INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:27:5-60:19
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\61233285c2a43f53853d6063abb1d933\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\61233285c2a43f53853d6063abb1d933\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\433b03d2d9b27298a42761101bbb7044\transformed\constraintlayout-2.1.0\AndroidManifest.xml:9:5-20
@@ -128,52 +128,56 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Di
 		INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:33:9-35
 	android:label
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:29:7-35
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:31:9-41
+	android:roundIcon
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:32:9-54
+	android:icon
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:30:9-43
 	android:allowBackup
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:28:7-34
-	android:usesCleartextTraffic
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:30:7-43
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:29:9-35
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:27:7-26
-service#com.example.dialer.service.CallService
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:33:5-37:54
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:28:9-48
+service#org.mediarise.dialer.service.CallService
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:36:9-40:58
 	android:exported
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:35:9-33
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:38:13-37
 	tools:ignore
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:37:9-51
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:40:13-55
 	android:foregroundServiceType
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:36:9-67
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:39:13-87
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:34:9-44
-activity#com.example.dialer.ui.CallActivity
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:40:5-45:39
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:37:13-48
+activity#org.mediarise.dialer.ui.CallActivity
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:43:9-48:43
 	android:turnScreenOn
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:45:9-36
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:48:13-40
 	android:launchMode
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:43:9-40
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:46:13-44
 	android:exported
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:42:9-32
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:45:13-36
 	android:showOnLockScreen
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:44:9-40
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:47:13-44
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:41:9-40
-activity#com.example.dialer.ui.StartActivity
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:48:5-55:16
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:44:13-44
+activity#org.mediarise.dialer.ui.StartActivity
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:51:9-58:20
 	android:exported
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:50:9-32
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:53:13-36
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:49:9-41
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:52:13-45
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:51:7-54:23
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:54:13-57:29
 action#android.intent.action.MAIN
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:52:9-61
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:55:17-69
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:52:17-58
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:55:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:53:9-69
+ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:56:17-77
 	android:name
-		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:53:19-66
+		ADDED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:56:27-74
 uses-sdk
 INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\workspace\JopaCall\app\src\main\AndroidManifest.xml
@@ -312,7 +316,7 @@ ADDED from [androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\tran
 		ADDED from [androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:24:9-44
 	android:name
 		ADDED from [androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:23:9-81
-permission#com.example.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+permission#org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
 		ADDED from [androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:24:9-44
@@ -322,7 +326,7 @@ uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:26:22-94
-uses-permission#com.example.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission#org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:26:22-94
