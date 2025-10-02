@@ -1,0 +1,58 @@
+<!-- app/src/main/AndroidManifest.xml -->
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <!-- Сеть -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+  <!-- Мультимедиа -->
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+  <!-- Foreground service (Android 10+) -->
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"
+      tools:ignore="ForegroundServicesPolicy" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+
+  <!-- Уведомления (Android 13+) -->
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+  <application
+      android:name=".App"
+      android:allowBackup="false"
+      android:label="WebRTCDialer"
+      android:usesCleartextTraffic="false">
+
+    <!-- Call service (обязательно foreground + уведомление) -->
+    <service
+        android:name=".service.CallService"
+        android:exported="false"
+        android:foregroundServiceType="camera|microphone|dataSync"
+        tools:ignore="ForegroundServicePermission" />
+
+    <!-- Activity звонка -->
+    <activity
+        android:name=".ui.CallActivity"
+        android:exported="true"
+        android:launchMode="singleTask"
+        android:showOnLockScreen="true"
+        android:turnScreenOn="true" />
+
+    <!-- Стартовый экран -->
+    <activity
+        android:name=".ui.StartActivity"
+        android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+
+  </application>
+</manifest>

@@ -1,0 +1,81 @@
+plugins {
+  id 'com.android.application'
+  id 'org.jetbrains.kotlin.android'
+  id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+android {
+  namespace 'com.example.dialer'
+  compileSdk 36
+
+  defaultConfig {
+    applicationId 'com.example.dialer'
+    minSdk 29
+    targetSdk 36
+    versionCode 10
+    versionName "1.0.0"
+
+    // Эмулятор + девайсы (JNI либы)
+    ndk { abiFilters "x86_64", "arm64-v8a" }
+
+    // --------- Секреты/URL берём из local.properties или ENV ---------
+    // В local.properties добавь, НО НЕ коммить:
+    // WS_BASE=wss://webrtc.mediarise.org/ws
+    // TURN_URL=turns:webrtc.mediarise.org:5349?transport=tcp
+    // TURN_USER=webrtcuser
+    // TURN_PASS=***секрет***
+    def prop = { k -> (project.findProperty(k) ?: System.getenv(k) ?: "") }
+
+    buildConfigField "String", "WS_BASE",   "\"${prop('WS_BASE') ?: 'wss://webrtc.mediarise.org/ws'}\""
+    buildConfigField "String", "TURN_URL",  "\"${prop('TURN_URL') ?: 'turns:webrtc.mediarise.org:5349?transport=tcp'}\""
+    buildConfigField "String", "TURN_USER", "\"${prop('TURN_USER') ?: ''}\""
+    buildConfigField "String", "TURN_PASS", "\"${prop('TURN_PASS') ?: ''}\""
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled true
+      shrinkResources true
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+      // НИЧЕГО секретного тут больше не пишем — всё идёт через defaultConfig выше
+    }
+    debug {
+      applicationIdSuffix ".dev"
+      versionNameSuffix "-dev"
+      // Для дебага так же берём из свойств (при необходимости в local.properties можно задать другие)
+    }
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
+  kotlinOptions { jvmTarget = '17' }
+
+  packaging {
+    jniLibs { useLegacyPackaging true } // нужно для WebRTC .so на некоторых конфигурациях
+    resources {
+      excludes += ['META-INF/DEPENDENCIES','META-INF/ASL2.0','META-INF/LICENSE*','META-INF/NOTICE*']
+    }
+  }
+
+  buildFeatures { buildConfig true }
+}
+
+dependencies {
+  // WebRTC (AOSP мейджор 137)
+  implementation "io.github.webrtc-sdk:android:137.7151.04"
+
+  // Net & JSON
+  implementation "com.squareup.okhttp3:okhttp:5.1.0"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2"
+  implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
+
+  // AndroidX
+  implementation "androidx.core:core-ktx:1.17.0"
+  implementation "androidx.appcompat:appcompat:1.7.1"
+  implementation "androidx.activity:activity-ktx:1.11.0"
+  implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.9.4"
+
+  implementation "com.google.android.material:material:1.13.0"
+}
