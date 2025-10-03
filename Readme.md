@@ -1,6 +1,6 @@
 # 🎧 JOPA – Joint Operations for Peer-to-peer Audio/Video
 
-![Joint Operations for Peer-to-peer Audio/Video]("./images/icon_1024.png")
+![Joint Operations for Peer-to-peer Audio/Video](./images/icon_1024.png)
 
 > 👉 "Just One Phone App"... or if you want the corporate version:  
 > **Joint Operations for Peer-to-peer Audio/Video**.
@@ -32,9 +32,9 @@ It’s light, fast, and doesn’t care about corporate bloatware.
 
 ## 📦 Installation
 1. Clone this JOPA:
-   ```bash
-   git clone https://github.com/digkill/JopaCall
-   ```
+```bash
+git clone https://github.com/digkill/JopaCall
+```
 
 2. Add your secrets to local.properties:
 ```
