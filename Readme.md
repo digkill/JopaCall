@@ -1,6 +1,6 @@
 # 🎧 JOPA – Joint Operations for Peer-to-peer Audio/Video
 
-![Joint Operations for Peer-to-peer Audio/Video ]("images/icon_1024.png")
+![Joint Operations for Peer-to-peer Audio/Video]("./images/icon_1024.png")
 
 > 👉 "Just One Phone App"... or if you want the corporate version:  
 > **Joint Operations for Peer-to-peer Audio/Video**.
