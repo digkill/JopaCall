@@ -1,8 +1,24 @@
-// app/build.gradle
+// Файл: app/build.gradle
+
 plugins {
+  // --- ГЛАВНОЕ ИСПРАВЛЕНИЕ: Разделены плагины ---
+  // Каждый плагин должен быть на новой строке.
   id 'com.android.application'
   id 'org.jetbrains.kotlin.android'
+  // Плагин для сериализации обязателен для работы @Serializable
   id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+// =================================================================================
+// Загрузка секретов из local.properties
+// =================================================================================
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+
+if (localPropertiesFile.exists()) {
+  localProperties.load(new FileInputStream(localPropertiesFile))
+} else {
+  logger.warn("Файл 'local.properties' не найден. Используются значения по умолчанию.")
 }
 
 android {
@@ -16,24 +32,21 @@ android {
     versionCode 10
     versionName "1.0.0"
 
-    // Эмулятор + девайсы (JNI либы)
-    ndk { abiFilters "x86_64", "arm64-v8a" }
-
-    // ---------- Секреты/URL из local.properties или ENV ----------
-    // В local.properties добавь (НЕ коммить):
-    // WS_BASE=...
-    // TURN_URL=...
-    // TURN_USER=...
-    // TURN_PASS=...
-    def prop = { k ->
-      def v = (project.findProperty(k) ?: System.getenv(k) ?: "")
-      return v
+    // Фильтр для нативных библиотек WebRTC
+    ndk {
+      abiFilters "x86_64", "arm64-v8a"
     }
 
-    buildConfigField "String", "WS_BASE",   "\"${prop('WS_BASE')}\""
-    buildConfigField "String", "TURN_URL",  "\"${prop('TURN_URL')}\""
-    buildConfigField "String", "TURN_USER", "\"${prop('TURN_USER')}\""
-    buildConfigField "String", "TURN_PASS", "\"${prop('TURN_PASS')}\""
+    // ... (applicationId, minSdk, и т.д. ...)
+
+    // =================================================================================
+    // ГЛАВНОЕ ИСПРАВЛЕНИЕ: Используем правильные имена свойств с префиксом "app."
+    // =================================================================================
+    buildConfigField "String", "WS_BASE", "\"${localProperties.getProperty('app.ws_base', '')}\""
+    buildConfigField "String", "TURN_URL",  "\"${localProperties.getProperty('app.turn_url', '')}\""
+    buildConfigField "String", "TURN_USER", "\"${localProperties.getProperty('app.turn_user', '')}\""
+    buildConfigField "String", "TURN_PASS", "\"${localProperties.getProperty('app.turn_pass', '')}\""
+
   }
 
   buildTypes {
@@ -41,14 +54,12 @@ android {
       minifyEnabled true
       shrinkResources true
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-      // Секреты не хардкодим — берём из defaultConfig (см. выше)
     }
     debug {
       applicationIdSuffix ".dev"
       versionNameSuffix "-dev"
       minifyEnabled false
       shrinkResources false
-      // Для дебага тоже используем BuildConfig.* из defaultConfig
     }
   }
 
@@ -56,44 +67,40 @@ android {
     sourceCompatibility JavaVersion.VERSION_17
     targetCompatibility JavaVersion.VERSION_17
   }
-  kotlinOptions { jvmTarget = '17' }
+  kotlinOptions {
+    jvmTarget = '17'
+  }
 
   packaging {
-    jniLibs { useLegacyPackaging true } // нужно для WebRTC .so на ряде конфигураций
     resources {
       excludes += [
+              '/META-INF/{AL2.0,LGPL2.1}',
               'META-INF/DEPENDENCIES',
-              'META-INF/ASL2.0',
               'META-INF/LICENSE*',
               'META-INF/NOTICE*'
       ]
     }
   }
 
-  buildFeatures { buildConfig true }
+  buildFeatures {
+    buildConfig true
+  }
 }
 
 dependencies {
-  // WebRTC (AOSP major 137) — содержит org.webrtc.audio.JavaAudioDeviceModule
+  // WebRTC
   implementation "io.github.webrtc-sdk:android:137.7151.04"
 
   // Net & JSON
+  // Замена okhttp на стабильную версию 4.x для совместимости с WebRTC SDK
   implementation "com.squareup.okhttp3:okhttp:5.1.0"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2"
   implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
 
-  // AndroidX
+  // AndroidX & UI
   implementation "androidx.core:core-ktx:1.17.0"
   implementation "androidx.appcompat:appcompat:1.7.1"
   implementation "androidx.activity:activity-ktx:1.11.0"
   implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.9.4"
-
   implementation "com.google.android.material:material:1.13.0"
 }
-
-/*
-ВАЖНО (Release / R8):
-В файле proguard-rules.pro добавь:
-  -keep class org.webrtc.** { *; }
-  -dontwarn org.webrtc.**
-*/

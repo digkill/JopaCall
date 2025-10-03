@@ -4,7 +4,17 @@
             "outputFile": "org.mediarise.dialer.app-mergeDebugResources-37:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.13\\transforms\\61233285c2a43f53853d6063abb1d933\\transformed\\material-1.13.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.14.3\\transforms\\f810de5c961439b75ef9e5a8d3dcaa9e\\transformed\\appcompat-1.7.1\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.14.3\\transforms\\1bad81a24e45b9c5dbd332e6bcbbe778\\transformed\\material-1.13.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -20,16 +30,6 @@
                         "endLines": "4,5,6,7,10,13,16,19",
                         "endColumns": "84,98,86,100,10,10,10,10",
                         "endOffsets": "427,526,613,714,913,1126,1327,1542"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.13\\transforms\\74bbf9acbfa0b96f1c6d706719b40799\\transformed\\appcompat-1.7.1\\res\\values-v24\\values-v24.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,212",
-                        "endColumns": "156,134",
-                        "endOffsets": "207,342"
                     }
                 }
             ]

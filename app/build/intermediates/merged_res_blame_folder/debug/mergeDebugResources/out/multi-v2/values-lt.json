@@ -4,24 +4,7 @@
             "outputFile": "org.mediarise.dialer.app-mergeDebugResources-37:/values-lt/values-lt.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.13\\transforms\\2daac0a471ed9bfbe09f2175695b3c8a\\transformed\\core-1.17.0\\res\\values-lt\\values-lt.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,153,263,362,465,576,686,806",
-                        "endColumns": "97,109,98,102,110,109,119,100",
-                        "endOffsets": "148,258,357,460,571,681,801,902"
-                    },
-                    "to": {
-                        "startLines": "39,40,41,42,43,44,45,123",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "3524,3622,3732,3831,3934,4045,4155,10505",
-                        "endColumns": "97,109,98,102,110,109,119,100",
-                        "endOffsets": "3617,3727,3826,3929,4040,4150,4270,10601"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.13\\transforms\\61233285c2a43f53853d6063abb1d933\\transformed\\material-1.13.0\\res\\values-lt\\values-lt.xml",
+                    "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.14.3\\transforms\\1bad81a24e45b9c5dbd332e6bcbbe778\\transformed\\material-1.13.0\\res\\values-lt\\values-lt.xml",
                     "from": {
                         "startLines": "2,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -40,7 +23,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.13\\transforms\\74bbf9acbfa0b96f1c6d706719b40799\\transformed\\appcompat-1.7.1\\res\\values-lt\\values-lt.xml",
+                    "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.14.3\\transforms\\9872c2d8e712c5f18917377d3c3302ac\\transformed\\core-1.17.0\\res\\values-lt\\values-lt.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,263,362,465,576,686,806",
+                        "endColumns": "97,109,98,102,110,109,119,100",
+                        "endOffsets": "148,258,357,460,571,681,801,902"
+                    },
+                    "to": {
+                        "startLines": "39,40,41,42,43,44,45,123",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "3524,3622,3732,3831,3934,4045,4155,10505",
+                        "endColumns": "97,109,98,102,110,109,119,100",
+                        "endOffsets": "3617,3727,3826,3929,4040,4150,4270,10601"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Digkill\\.gradle\\caches\\8.14.3\\transforms\\f810de5c961439b75ef9e5a8d3dcaa9e\\transformed\\appcompat-1.7.1\\res\\values-lt\\values-lt.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

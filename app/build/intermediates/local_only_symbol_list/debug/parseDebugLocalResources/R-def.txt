@@ -5,7 +5,11 @@ drawable ic_call
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_stat_name
+id join_button
+id room_id_edit_text
+layout activity_start
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 string app_name
+style Theme.JopaCall

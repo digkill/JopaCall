@@ -1,108 +1,103 @@
-// app/src/main/java/org/mediarise/dialer/ui/CallActivity.kt
 package org.mediarise.dialer.ui
 
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.mediarise.dialer.BuildConfig
 import org.mediarise.dialer.RtcEnv
 import org.mediarise.dialer.signaling.SignalingClient
 import org.mediarise.dialer.webrtc.PeerConnectionManager
-import org.webrtc.IceCandidate
-import org.webrtc.PeerConnection
-import org.webrtc.RendererCommon
-import org.webrtc.SessionDescription
-import org.webrtc.SurfaceViewRenderer
+import org.webrtc.*
+import java.util.*
+import java.util.concurrent.atomic.AtomicBoolean
 
 class CallActivity : ComponentActivity(), SignalingClient.Listener {
 
     private lateinit var localView: SurfaceViewRenderer
     private lateinit var remoteView: SurfaceViewRenderer
     private var pcm: PeerConnectionManager? = null
-    private lateinit var sig: SignalingClient
+    private val sig: SignalingClient by lazy {
+        SignalingClient(BuildConfig.WS_BASE, lifecycleScope, this)
+    }
 
     private val pcFactory get() = RtcEnv.factory
     private val eglCtx get() = RtcEnv.eglCtx
-    private val roomId: String by lazy { intent?.getStringExtra("room") ?: "room-demo" }
+    private val roomId: String by lazy { intent?.getStringExtra("room") ?: "room-demo-${UUID.randomUUID().toString().take(4)}" }
 
-    private val reqPerms = registerForActivityResult(
+    // Флаг для предотвращения повторного закрытия
+    private val isClosing = AtomicBoolean(false)
+
+    private val requestPermissionsLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
-    ) { grants ->
-        val cam = grants[Manifest.permission.CAMERA] == true
-        val mic = grants[Manifest.permission.RECORD_AUDIO] == true
-        if (mic) startFlow(cameraAllowed = cam) else requestMicOnly()
+    ) { permissions ->
+        val micGranted = permissions[Manifest.permission.RECORD_AUDIO] == true
+        if (micGranted) {
+            val cameraGranted = permissions[Manifest.permission.CAMERA] == true
+            startCallFlow(cameraEnabled = cameraGranted)
+        } else {
+            Toast.makeText(this, "Требуется разрешение на микрофон.", Toast.LENGTH_LONG).show()
+            safeFinish()
+        }
     }
 
     private fun Int.dp(): Int = (this * resources.displayMetrics.density).toInt()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Не даем экрану погаснуть во время звонка
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        setupUI()
+        requestNeededPermissions()
+    }
 
-        // ---- UI ----
+    private fun setupUI() {
         val container = FrameLayout(this)
-
         remoteView = SurfaceViewRenderer(this).apply {
             init(eglCtx, null)
-            setMirror(false)
-            setEnableHardwareScaler(true)
             setScalingType(RendererCommon.ScalingType.SCALE_ASPECT_FILL)
-            keepScreenOn = true
-            layoutParams = FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
+            layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         }
-
         localView = SurfaceViewRenderer(this).apply {
             init(eglCtx, null)
             setMirror(true)
             setEnableHardwareScaler(true)
-            setScalingType(RendererCommon.ScalingType.SCALE_ASPECT_FILL)
-            keepScreenOn = true
-            // маленькое окно поверх remote
+            setScalingType(RendererCommon.ScalingType.SCALE_ASPECT_FIT)
             setZOrderMediaOverlay(true)
-            setZOrderOnTop(true) // важно для эмуляторов/некоторых девайсов
             val w = 120.dp()
             val h = 160.dp()
             layoutParams = FrameLayout.LayoutParams(w, h, Gravity.BOTTOM or Gravity.END).apply {
-                marginEnd = 12.dp()
-                bottomMargin = 12.dp()
+                rightMargin = 16.dp()
+                bottomMargin = 16.dp()
             }
-            elevation = 8f
         }
-
         container.addView(remoteView)
         container.addView(localView)
         setContentView(container)
-
-        // ---- Signaling ----
-        sig = SignalingClient(BuildConfig.WS_BASE, lifecycleScope, this)
-
-        // ---- Permissions ----
-        val perms = mutableListOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
-        if (Build.VERSION.SDK_INT >= 33) perms += Manifest.permission.POST_NOTIFICATIONS
-        reqPerms.launch(perms.toTypedArray())
     }
 
-    private fun requestMicOnly() {
-        reqPerms.launch(arrayOf(Manifest.permission.RECORD_AUDIO))
+    private fun requestNeededPermissions() {
+        val requiredPermissions = buildList {
+            add(Manifest.permission.RECORD_AUDIO)
+            add(Manifest.permission.CAMERA)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                add(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }.toTypedArray()
+        requestPermissionsLauncher.launch(requiredPermissions)
     }
 
-    private fun startFlow(cameraAllowed: Boolean) {
-        // ⚠ Foreground Service убрали — он и крэшил процесс при неправильном уведомлении.
-
-        val ice = listOf(
-            // STUN (пусть будет, для простых путей)
+    private fun startCallFlow(cameraEnabled: Boolean) {
+        val iceServers = listOf(
             PeerConnection.IceServer.builder("stun:stun.l.google.com:19302").createIceServer(),
-            // Твой TURN
             PeerConnection.IceServer.builder(BuildConfig.TURN_URL)
                 .setUsername(BuildConfig.TURN_USER)
                 .setPassword(BuildConfig.TURN_PASS)
@@ -112,51 +107,71 @@ class CallActivity : ComponentActivity(), SignalingClient.Listener {
         pcm = PeerConnectionManager(
             appContext = applicationContext,
             factory = pcFactory,
-            eglCtx = eglCtx,                 // общий EGL-контекст из RtcEnv (обязательно)
-            iceServers = ice,
+            eglCtx = eglCtx,
+            iceServers = iceServers,
             remoteSink = remoteView,
             localSink = localView,
-            enableVideo = cameraAllowed,     // включаем превью только при разрешении камеры
-            relayOnly = true                 // пока диагностируем TURN; вернёшь на false позже
+            enableVideo = cameraEnabled
         ).also { manager ->
             manager.createPeer(
-                onIce = { c -> sig.sendIce(c.sdpMid ?: "", c.sdpMLineIndex, c.sdp) },
-                onConnected = { /* UI ok */ },
-                onDisconnected = { /* UI warn */ }
+                onIce = { candidate -> sig.sendIce(candidate.sdpMid, candidate.sdpMLineIndex, candidate.sdp) },
+                onConnected = { runOnUiThread { Toast.makeText(this, "Соединено!", Toast.LENGTH_SHORT).show() } },
+                // --- УЛУЧШЕНИЕ: Используем общий метод onClosed ---
+                onDisconnected = { reason -> onClosed("Соединение разорвано: $reason") }
             )
         }
-
-        // Подключаемся к сигналингу; оффер отправим после peer-joined
         sig.connect(roomId)
     }
 
-    // ---- Signaling callbacks ----
+    // --- Signaling Callbacks ---
+
     override fun onPeerJoined(peerId: String) {
-        lifecycleScope.launch {
-            delay(100) // дать WS стабилизироваться
-            pcm?.createOffer { off -> sig.sendOffer(off.description) }
-        }
+        // Убедимся, что pcm не null, прежде чем создавать offer
+        pcm?.createOffer { sdp -> sig.sendOffer(sdp.description) }
     }
 
     override fun onOffer(from: String, sdp: String) {
-        pcm?.setRemote(SessionDescription(SessionDescription.Type.OFFER, sdp))
-        pcm?.createAnswer { ans -> sig.sendAnswer(ans.description) }
+        val remoteSdp = SessionDescription(SessionDescription.Type.OFFER, sdp)
+        pcm?.setRemoteDescription(remoteSdp)
+        pcm?.createAnswer { answerSdp -> sig.sendAnswer(answerSdp.description) }
     }
 
     override fun onAnswer(from: String, sdp: String) {
-        pcm?.setRemote(SessionDescription(SessionDescription.Type.ANSWER, sdp))
+        val remoteSdp = SessionDescription(SessionDescription.Type.ANSWER, sdp)
+        pcm?.setRemoteDescription(remoteSdp)
     }
 
     override fun onIce(from: String, mid: String, index: Int, cand: String) {
-        pcm?.addIce(IceCandidate(mid, index, cand))
+        pcm?.addIceCandidate(IceCandidate(mid, index, cand))
     }
 
-    override fun onClosed() { /* по желанию показать disconnected */ }
+    override fun onClosed(reason: String) {
+        // Показываем сообщение и безопасно закрываем активность
+        runOnUiThread {
+            Toast.makeText(this, reason, Toast.LENGTH_LONG).show()
+            safeFinish()
+        }
+    }
+
+    // --- УЛУЧШЕНИЕ: Безопасное завершение активности ---
+    private fun safeFinish() {
+        // AtomicBoolean гарантирует, что код внутри выполнится только один раз
+        if (isClosing.compareAndSet(false, true)) {
+            Log.d("CallActivity", "Finishing activity...")
+            finish()
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()
-        runCatching { sig.leave() }
-        pcm?.close(); pcm = null
+        Log.d("CallActivity", "onDestroy called")
+        // Очищаем флаг, чтобы экран не оставался включенным
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
+        // Безопасно освобождаем все ресурсы
+        sig.leave()
+        pcm?.close()
+        // Очищаем рендереры в последнюю очередь
         localView.release()
         remoteView.release()
     }

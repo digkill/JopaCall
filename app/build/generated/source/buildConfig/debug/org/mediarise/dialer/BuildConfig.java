@@ -10,11 +10,11 @@ public final class BuildConfig {
   public static final int VERSION_CODE = 10;
   public static final String VERSION_NAME = "1.0.0-dev";
   // Field from default config.
-  public static final String TURN_PASS = "";
+  public static final String TURN_PASS = "%Nlwg1000wd@";
   // Field from default config.
-  public static final String TURN_URL = "";
+  public static final String TURN_URL = "turns:webrtc.mediarise.org:5349?transport=tcp";
   // Field from default config.
-  public static final String TURN_USER = "";
+  public static final String TURN_USER = "webrtcuser";
   // Field from default config.
-  public static final String WS_BASE = "";
+  public static final String WS_BASE = "wss://webrtc.mediarise.org/ws";
 }

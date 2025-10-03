@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- app/src/main/AndroidManifest.xml -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.mediarise.dialer.dev"
     android:versionCode="10"
@@ -9,58 +8,48 @@
         android:minSdkVersion="29"
         android:targetSdkVersion="36" />
 
-    <!-- Сеть -->
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
-
+    <!-- 1. Основные разрешения для WebRTC -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!-- Мультимедиа -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
-    <!-- Foreground service (Android 10+) -->
+    <!-- 2. Разрешения для работы в фоне и уведомлений -->
+    <!-- Для Android 13+ (API 33) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Для Android 14+ (API 34) при использовании foregroundServiceType -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
 
-    <!-- Уведомления (Android 13+) -->
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Объявление используемых функций. Помогает Google Play фильтровать устройства. -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="true" />
 
     <permission
         android:name="org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-
+    <uses-permission android:name="org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- ИСПРАВЛЕНИЕ 1: Атрибут `package` удален, так как он задается в build.gradle -->
     <application
         android:name="org.mediarise.dialer.App"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
-        android:extractNativeLibs="true"
+        android:extractNativeLibs="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true" >
+        android:supportsRtl="true"
+        android:theme="@style/Theme.JopaCall"
+        android:usesCleartextTraffic="true" > <!-- ИСПРАВЛЕНИЕ 2: Явно указана тема приложения -->
 
-        <!-- Call service (обязательно foreground + уведомление) -->
-        <service
-            android:name="org.mediarise.dialer.service.CallService"
-            android:exported="false"
-            android:foregroundServiceType="camera|microphone|dataSync|mediaProjection" />
 
-        <!-- Activity звонка -->
-        <activity
-            android:name="org.mediarise.dialer.ui.CallActivity"
-            android:exported="true"
-            android:launchMode="singleTask"
-            android:showOnLockScreen="true"
-            android:turnScreenOn="true" />
-
-        <!-- Стартовый экран -->
+        <!-- Стартовый экран (ЕДИНСТВЕННАЯ точка входа) -->
         <activity
             android:name="org.mediarise.dialer.ui.StartActivity"
             android:exported="true" >
@@ -70,6 +59,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Экран звонка -->
+        <activity
+            android:name="org.mediarise.dialer.ui.CallActivity"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:showOnLockScreen="true"
+            android:turnScreenOn="true" />
+
+        <!-- Сервис для звонка в фоновом режиме -->
+        <!-- ИСПРАВЛЕНИЕ 3: Добавлен тип FOREGROUND_SERVICE_SPECIAL_USE -->
+        <service
+            android:name="org.mediarise.dialer.service.CallService"
+            android:exported="false"
+            android:foregroundServiceType="camera|microphone|specialUse" >
+
+            <!-- Для Android 14+ нужно также указать причину "особого использования" -->
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Для обеспечения непрерывности видеозвонков, когда приложение свернуто." />
+        </service>
 
         <provider
             android:name="androidx.startup.InitializationProvider"

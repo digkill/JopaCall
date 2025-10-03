@@ -1,70 +1,87 @@
-// app/src/main/java/com/example/dialer/service/CallService.kt
 package org.mediarise.dialer.service
 
+// --- ГЛАВНОЕ ИСПРАВЛЕНИЕ: Исправлены некорректные импорты ---
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import org.mediarise.dialer.R
+import org.mediarise.dialer.ui.CallActivity
 
 class CallService : Service() {
 
     companion object {
-        private const val CHANNEL_ID = "webrtc_call"   // единый ID
-        private const val NOTIF_ID = 1001
+        private const val CHANNEL_ID = "webrtc_call_channel"
+        private const val NOTIFICATION_ID = 1001
     }
 
     override fun onCreate() {
         super.onCreate()
-        ensureChannel()
+        startAsForegroundService()
+    }
+
+    private fun startAsForegroundService() {
+        createNotificationChannel()
+
+        val pendingIntent: PendingIntent =
+            Intent(this, CallActivity::class.java).let { notificationIntent ->
+                // FLAG_IMMUTABLE обязателен для современных версий Android
+                PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE)
+            }
 
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("Call in progress")
-            .setContentText("WebRTC active")
-            .setSmallIcon(R.drawable.ic_call)           // иконка существует (см. ниже)
+            .setContentTitle("Активный звонок")
+            .setContentText("Нажмите, чтобы вернуться в приложение")
+            .setSmallIcon(R.drawable.ic_call) // Убедитесь, что эта иконка существует в res/drawable
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setCategory(NotificationCompat.CATEGORY_CALL)
             .setOngoing(true)
+            .setContentIntent(pendingIntent)
             .build()
 
-        // Один раз стартуем как FGS, с правильными типами.
-        if (Build.VERSION.SDK_INT >= 34) {
-            startForeground(
-                NOTIF_ID,
-                notification,
-                ServiceInfo.FOREGROUND_SERVICE_TYPE_CAMERA or
-                        ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE
-            )
-        } else if (Build.VERSION.SDK_INT >= 29) {
-            startForeground(
-                NOTIF_ID,
-                notification,
-                ServiceInfo.FOREGROUND_SERVICE_TYPE_CAMERA or
-                        ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE
-            )
-        } else {
-            startForeground(NOTIF_ID, notification)
+        // Улучшенная логика вызова startForeground
+        val foregroundServiceType =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                // Для Android 14+ (API 34) тип specialUse также должен быть добавлен в манифест
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_CAMERA or
+                            ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE or
+                            ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE
+                } else {
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_CAMERA or
+                            ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE
+                }
+            } else {
+                0
+            }
+
+        startForeground(NOTIFICATION_ID, notification, foregroundServiceType)
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "Активные звонки"
+            val descriptionText = "Уведомления, которые отображаются во время WebRTC звонка"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+                description = descriptionText
+            }
+            val notificationManager: NotificationManager =
+                getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
         }
     }
 
-    private fun ensureChannel() {
-        val nm = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        if (nm.getNotificationChannel(CHANNEL_ID) == null) {
-            nm.createNotificationChannel(
-                NotificationChannel(
-                    CHANNEL_ID,
-                    "Calls",
-                    NotificationManager.IMPORTANCE_HIGH
-                )
-            )
-        }
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        return START_STICKY
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int = START_STICKY
-    override fun onBind(intent: Intent?): IBinder? = null
+    override fun onBind(intent: Intent?): IBinder? {
+        return null
+    }
 }

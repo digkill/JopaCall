@@ -1,197 +1,218 @@
 1<?xml version="1.0" encoding="utf-8"?>
-2<!-- app/src/main/AndroidManifest.xml -->
-3<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-4    package="org.mediarise.dialer.dev"
-5    android:versionCode="10"
-6    android:versionName="1.0.0-dev" >
-7
-8    <uses-sdk
-9        android:minSdkVersion="29"
-10        android:targetSdkVersion="36" />
-11
-12    <!-- Сеть -->
-13    <uses-feature
-13-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:6:5-8:36
-14        android:name="android.hardware.camera"
-14-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:7:9-47
-15        android:required="false" />
-15-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:8:9-33
-16
-17    <uses-permission android:name="android.permission.INTERNET" />
-17-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:10:5-67
-17-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:10:22-64
-18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-18-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:11:5-79
-18-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:11:22-76
-19
-20    <!-- Мультимедиа -->
-21    <uses-permission android:name="android.permission.CAMERA" />
-21-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:14:5-65
-21-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:14:22-62
-22    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-22-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:15:5-71
-22-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:15:22-68
-23
-24    <!-- Foreground service (Android 10+) -->
-25    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-25-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:18:5-20:51
-25-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:19:9-61
-26    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
-26-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:21:5-84
-26-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:21:22-81
-27    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
-27-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:22:5-88
-27-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:22:22-85
-28
-29    <!-- Уведомления (Android 13+) -->
-30    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-30-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:25:5-77
-30-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:25:22-74
-31
-32    <permission
-32-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:22:5-24:47
-33        android:name="org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-33-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:23:9-81
-34        android:protectionLevel="signature" />
-34-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:24:9-44
-35
-36    <uses-permission android:name="org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-36-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:26:5-97
-36-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:26:22-94
-37
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.mediarise.dialer.dev"
+4    android:versionCode="10"
+5    android:versionName="1.0.0-dev" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="29"
+9        android:targetSdkVersion="36" />
+10
+11    <!-- 1. Основные разрешения для WebRTC -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:6:5-67
+12-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:6:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:7:5-79
+13-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:7:22-76
+14    <uses-permission android:name="android.permission.CAMERA" />
+14-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:8:5-65
+14-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:8:22-62
+15    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+15-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:9:5-71
+15-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:9:22-68
+16    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+16-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:10:5-80
+16-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:10:22-77
+17
+18    <!-- 2. Разрешения для работы в фоне и уведомлений -->
+19    <!-- Для Android 13+ (API 33) -->
+20    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+20-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:14:5-77
+20-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:14:22-74
+21    <!-- Для Android 14+ (API 34) при использовании foregroundServiceType -->
+22    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+22-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:16:5-77
+22-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:16:22-74
+23    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+23-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:17:5-84
+23-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:17:22-81
+24    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+24-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:18:5-88
+24-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:18:22-85
+25
+26    <!-- Объявление используемых функций. Помогает Google Play фильтровать устройства. -->
+27    <uses-feature android:name="android.hardware.camera" />
+27-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:21:5-60
+27-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:21:19-57
+28    <uses-feature android:name="android.hardware.camera.autofocus" />
+28-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:22:5-70
+28-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:22:19-67
+29    <uses-feature
+29-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:23:5-88
+30        android:name="android.hardware.microphone"
+30-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:23:19-61
+31        android:required="true" />
+31-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:23:62-85
+32
+33    <permission
+33-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\9872c2d8e712c5f18917377d3c3302ac\transformed\core-1.17.0\AndroidManifest.xml:22:5-24:47
+34        android:name="org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+34-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\9872c2d8e712c5f18917377d3c3302ac\transformed\core-1.17.0\AndroidManifest.xml:23:9-81
+35        android:protectionLevel="signature" />
+35-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\9872c2d8e712c5f18917377d3c3302ac\transformed\core-1.17.0\AndroidManifest.xml:24:9-44
+36
+37    <uses-permission android:name="org.mediarise.dialer.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- ИСПРАВЛЕНИЕ 1: Атрибут `package` удален, так как он задается в build.gradle -->
+37-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\9872c2d8e712c5f18917377d3c3302ac\transformed\core-1.17.0\AndroidManifest.xml:26:5-97
+37-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\9872c2d8e712c5f18917377d3c3302ac\transformed\core-1.17.0\AndroidManifest.xml:26:22-94
 38    <application
-38-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:27:5-60:19
+38-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:27:5-69:19
 39        android:name="org.mediarise.dialer.App"
-39-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:28:9-48
+39-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:28:9-28
 40        android:allowBackup="true"
 40-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:29:9-35
 41        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-41-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\2daac0a471ed9bfbe09f2175695b3c8a\transformed\core-1.17.0\AndroidManifest.xml:28:18-86
+41-->[androidx.core:core:1.17.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\9872c2d8e712c5f18917377d3c3302ac\transformed\core-1.17.0\AndroidManifest.xml:28:18-86
 42        android:debuggable="true"
-43        android:extractNativeLibs="true"
+43        android:extractNativeLibs="false"
 44        android:icon="@mipmap/ic_launcher"
 44-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:30:9-43
 45        android:label="@string/app_name"
 45-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:31:9-41
 46        android:roundIcon="@mipmap/ic_launcher_round"
 46-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:32:9-54
-47        android:supportsRtl="true" >
+47        android:supportsRtl="true"
 47-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:33:9-35
-48
-49        <!-- Call service (обязательно foreground + уведомление) -->
-50        <service
-50-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:36:9-40:58
-51            android:name="org.mediarise.dialer.service.CallService"
-51-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:37:13-48
-52            android:exported="false"
-52-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:38:13-37
-53            android:foregroundServiceType="camera|microphone|dataSync|mediaProjection" />
-53-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:39:13-87
-54
-55        <!-- Activity звонка -->
-56        <activity
-56-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:43:9-48:43
-57            android:name="org.mediarise.dialer.ui.CallActivity"
-57-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:44:13-44
-58            android:exported="true"
-58-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:45:13-36
-59            android:launchMode="singleTask"
-59-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:46:13-44
-60            android:showOnLockScreen="true"
-60-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:47:13-44
-61            android:turnScreenOn="true" />
-61-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:48:13-40
+48        android:theme="@style/Theme.JopaCall"
+48-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:36:9-46
+49        android:usesCleartextTraffic="true" > <!-- ИСПРАВЛЕНИЕ 2: Явно указана тема приложения -->
+49-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:34:9-44
+50
+51
+52        <!-- Стартовый экран (ЕДИНСТВЕННАЯ точка входа) -->
+53        <activity
+53-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:39:9-46:20
+54            android:name="org.mediarise.dialer.ui.StartActivity"
+54-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:40:13-45
+55            android:exported="true" >
+55-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:41:13-36
+56            <intent-filter>
+56-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:42:13-45:29
+57                <action android:name="android.intent.action.MAIN" />
+57-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:43:17-69
+57-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:43:25-66
+58
+59                <category android:name="android.intent.category.LAUNCHER" />
+59-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:44:17-77
+59-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:44:27-74
+60            </intent-filter>
+61        </activity>
 62
-63        <!-- Стартовый экран -->
+63        <!-- Экран звонка -->
 64        <activity
-64-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:51:9-58:20
-65            android:name="org.mediarise.dialer.ui.StartActivity"
-65-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:52:13-45
-66            android:exported="true" >
-66-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:53:13-36
-67            <intent-filter>
-67-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:54:13-57:29
-68                <action android:name="android.intent.action.MAIN" />
-68-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:55:17-69
-68-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:55:25-66
-69
-70                <category android:name="android.intent.category.LAUNCHER" />
-70-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:56:17-77
-70-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:56:27-74
-71            </intent-filter>
-72        </activity>
-73
-74        <provider
-74-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\f07739ff1b02a263f4e9fcbf349b780e\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-75            android:name="androidx.startup.InitializationProvider"
-75-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\f07739ff1b02a263f4e9fcbf349b780e\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
-76            android:authorities="org.mediarise.dialer.dev.androidx-startup"
-76-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\f07739ff1b02a263f4e9fcbf349b780e\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-77            android:exported="false" >
-77-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\f07739ff1b02a263f4e9fcbf349b780e\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
-78            <meta-data
-78-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\f07739ff1b02a263f4e9fcbf349b780e\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-79                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-79-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\f07739ff1b02a263f4e9fcbf349b780e\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
-80                android:value="androidx.startup" />
-80-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\f07739ff1b02a263f4e9fcbf349b780e\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
-81            <meta-data
-81-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Digkill\.gradle\caches\8.13\transforms\507005b99e5ec9a772e85e5061a00517\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
-82                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-82-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Digkill\.gradle\caches\8.13\transforms\507005b99e5ec9a772e85e5061a00517\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
-83                android:value="androidx.startup" />
-83-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Digkill\.gradle\caches\8.13\transforms\507005b99e5ec9a772e85e5061a00517\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
-84            <meta-data
-84-->[com.squareup.okhttp3:okhttp-android:5.1.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\51097a41a6852d738de612fbc17afc4c\transformed\okhttp-release\AndroidManifest.xml:16:13-18:52
-85                android:name="okhttp3.internal.platform.PlatformInitializer"
-85-->[com.squareup.okhttp3:okhttp-android:5.1.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\51097a41a6852d738de612fbc17afc4c\transformed\okhttp-release\AndroidManifest.xml:17:17-77
-86                android:value="androidx.startup" />
-86-->[com.squareup.okhttp3:okhttp-android:5.1.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\51097a41a6852d738de612fbc17afc4c\transformed\okhttp-release\AndroidManifest.xml:18:17-49
-87            <meta-data
-87-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
-88                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-88-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
-89                android:value="androidx.startup" />
-89-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
-90        </provider>
-91
-92        <receiver
-92-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
-93            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-93-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
-94            android:directBootAware="false"
-94-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
-95            android:enabled="true"
-95-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
-96            android:exported="true"
-96-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
-97            android:permission="android.permission.DUMP" >
-97-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
-98            <intent-filter>
-98-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
-99                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-99-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
-99-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
-100            </intent-filter>
-101            <intent-filter>
-101-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
-102                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-102-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
-102-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
-103            </intent-filter>
-104            <intent-filter>
-104-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
-105                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
-105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
-106            </intent-filter>
-107            <intent-filter>
-107-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
-108                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
-108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.13\transforms\b3758f202dab2dd4fec8dc8f7989769b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
-109            </intent-filter>
-110        </receiver>
-111    </application>
-112
-113</manifest>
+64-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:49:9-55:56
+65            android:name="org.mediarise.dialer.ui.CallActivity"
+65-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:50:13-44
+66            android:exported="false"
+66-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:51:13-37
+67            android:launchMode="singleInstance"
+67-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:52:13-48
+68            android:showOnLockScreen="true"
+68-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:53:13-44
+69            android:turnScreenOn="true" />
+69-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:54:13-40
+70
+71        <!-- Сервис для звонка в фоновом режиме -->
+72        <!-- ИСПРАВЛЕНИЕ 3: Добавлен тип FOREGROUND_SERVICE_SPECIAL_USE -->
+73        <service
+73-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:59:9-67:19
+74            android:name="org.mediarise.dialer.service.CallService"
+74-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:60:13-48
+75            android:exported="false"
+75-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:61:13-37
+76            android:foregroundServiceType="camera|microphone|specialUse" >
+76-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:62:13-73
+77
+78            <!-- Для Android 14+ нужно также указать причину "особого использования" -->
+79            <property
+79-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:65:13-66:106
+80                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+80-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:65:23-82
+81                android:value="Для обеспечения непрерывности видеозвонков, когда приложение свернуто." />
+81-->D:\workspace\JopaCall\app\src\main\AndroidManifest.xml:66:17-103
+82        </service>
+83
+84        <provider
+84-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\e31fecb57486064d26cd9e3aa097828c\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+85            android:name="androidx.startup.InitializationProvider"
+85-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\e31fecb57486064d26cd9e3aa097828c\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+86            android:authorities="org.mediarise.dialer.dev.androidx-startup"
+86-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\e31fecb57486064d26cd9e3aa097828c\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+87            android:exported="false" >
+87-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\e31fecb57486064d26cd9e3aa097828c\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+88            <meta-data
+88-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\e31fecb57486064d26cd9e3aa097828c\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+89                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+89-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\e31fecb57486064d26cd9e3aa097828c\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+90                android:value="androidx.startup" />
+90-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\e31fecb57486064d26cd9e3aa097828c\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+91            <meta-data
+91-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\41b4576625f318e04d5e001ca713ef18\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
+92                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+92-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\41b4576625f318e04d5e001ca713ef18\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
+93                android:value="androidx.startup" />
+93-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\41b4576625f318e04d5e001ca713ef18\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
+94            <meta-data
+94-->[com.squareup.okhttp3:okhttp-android:5.1.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\df4d047c9c7d84ee4d5e12086aee7315\transformed\okhttp-release\AndroidManifest.xml:16:13-18:52
+95                android:name="okhttp3.internal.platform.PlatformInitializer"
+95-->[com.squareup.okhttp3:okhttp-android:5.1.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\df4d047c9c7d84ee4d5e12086aee7315\transformed\okhttp-release\AndroidManifest.xml:17:17-77
+96                android:value="androidx.startup" />
+96-->[com.squareup.okhttp3:okhttp-android:5.1.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\df4d047c9c7d84ee4d5e12086aee7315\transformed\okhttp-release\AndroidManifest.xml:18:17-49
+97            <meta-data
+97-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+98                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+98-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+99                android:value="androidx.startup" />
+99-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+100        </provider>
+101
+102        <receiver
+102-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+103            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+103-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+104            android:directBootAware="false"
+104-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+105            android:enabled="true"
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+106            android:exported="true"
+106-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+107            android:permission="android.permission.DUMP" >
+107-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+108            <intent-filter>
+108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+109                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+109-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+109-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+110            </intent-filter>
+111            <intent-filter>
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+112                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+112-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+112-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+113            </intent-filter>
+114            <intent-filter>
+114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+115                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+115-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+115-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+116            </intent-filter>
+117            <intent-filter>
+117-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+118                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+118-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+118-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Digkill\.gradle\caches\8.14.3\transforms\27f9444c3d5f4cf472c7d37e5adbc2b2\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+119            </intent-filter>
+120        </receiver>
+121    </application>
+122
+123</manifest>

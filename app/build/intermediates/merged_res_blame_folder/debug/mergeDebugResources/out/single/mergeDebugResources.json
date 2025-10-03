@@ -1,15 +1,15 @@
 [
     {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "org.mediarise.dialer.app-debug-39:/layout_activity_start.xml.flat",
+        "source": "org.mediarise.dialer.app-main-41:/layout/activity_start.xml"
     },
     {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "org.mediarise.dialer.app-debug-39:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "org.mediarise.dialer.app-main-41:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "org.mediarise.dialer.app-main-41:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
         "merged": "org.mediarise.dialer.app-debug-39:/mipmap-xxxhdpi_ic_launcher.webp.flat",
@@ -20,80 +20,36 @@
         "source": "org.mediarise.dialer.app-main-41:/mipmap-hdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "org.mediarise.dialer.app-main-41:/mipmap-mdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
-        "source": "org.mediarise.dialer.app-main-41:/mipmap-xhdpi/ic_launcher_foreground.webp"
-    },
-    {
-        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
-        "source": "org.mediarise.dialer.app-main-41:/mipmap-mdpi/ic_launcher_foreground.webp"
-    },
-    {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\drawable_ic_stat_name.xml.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\drawable\\ic_stat_name.xml"
-    },
-    {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-xxxhdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "org.mediarise.dialer.app-main-41:/mipmap-anydpi-v26/ic_launcher.xml"
-    },
-    {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-mdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "org.mediarise.dialer.app-main-41:/mipmap-anydpi-v26/ic_launcher_round.xml"
-    },
-    {
-        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "org.mediarise.dialer.app-main-41:/mipmap-mdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "org.mediarise.dialer.app-main-41:/mipmap-xxxhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-mdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-hdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "org.mediarise.dialer.app-debug-39:/drawable_ic_launcher_background.xml.flat",
+        "source": "org.mediarise.dialer.app-main-41:/drawable/ic_launcher_background.xml"
     },
     {
         "merged": "org.mediarise.dialer.app-debug-39:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
         "source": "org.mediarise.dialer.app-main-41:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-xhdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "org.mediarise.dialer.app-debug-39:/mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "org.mediarise.dialer.app-main-41:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "org.mediarise.dialer.app-main-41:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "org.mediarise.dialer.app-debug-39:/drawable_ic_call.png.flat",
+        "source": "org.mediarise.dialer.app-main-41:/drawable/ic_call.png"
+    },
+    {
+        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "org.mediarise.dialer.app-main-41:/mipmap-xhdpi/ic_launcher_foreground.webp"
     },
     {
         "merged": "org.mediarise.dialer.app-debug-39:/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "org.mediarise.dialer.app-main-41:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\drawable_ic_call.png.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\drawable\\ic_call.png"
+        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "org.mediarise.dialer.app-main-41:/mipmap-mdpi/ic_launcher_foreground.webp"
     },
     {
         "merged": "org.mediarise.dialer.app-debug-39:/mipmap-xxhdpi_ic_launcher.webp.flat",
@@ -108,27 +64,27 @@
         "source": "org.mediarise.dialer.app-main-41:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\drawable\\ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-xxhdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "org.mediarise.dialer.app-debug-39:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "org.mediarise.dialer.app-main-41:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\drawable\\ic_launcher_background.xml"
+        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "org.mediarise.dialer.app-main-41:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "org.mediarise.dialer.app-main-41:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
         "merged": "org.mediarise.dialer.app-debug-39:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
         "source": "org.mediarise.dialer.app-main-41:/mipmap-xxhdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-debug-39:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\Digkill\\.gradle\\daemon\\8.13\\org.mediarise.dialer.app-main-41:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "org.mediarise.dialer.app-debug-39:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "org.mediarise.dialer.app-main-41:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "org.mediarise.dialer.app-debug-39:/drawable_ic_stat_name.xml.flat",
+        "source": "org.mediarise.dialer.app-main-41:/drawable/ic_stat_name.xml"
     }
 ]
